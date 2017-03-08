@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DetallesRecetas extends AppCompatActivity {
 
@@ -65,7 +67,12 @@ public class DetallesRecetas extends AppCompatActivity {
                     Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
-                    DataManager.guardarRecetas(receta, getApplicationContext());
+                   // DataManager.guardarRecetas(receta, getApplicationContext());
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    final String key = receta.getNombreReceta();
+                    final DatabaseReference myRef = database.getReference("nombreReceta " + key);
+                    myRef.setValue(receta);
+
                 }
             });
 

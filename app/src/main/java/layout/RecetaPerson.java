@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
@@ -123,10 +124,7 @@ public class RecetaPerson extends Fragment {
                 if (resultCode == RESULT_OK) {
 
                     Glide.with(getContext()).load(pathFotoTemporal).into(recetaImage);
-                    //Guardamos en el firebase
-                    FirebaseDatabase data = FirebaseDatabase.getInstance();
-                    final DatabaseReference Newre = data.getReference("RECETAPERSON " + pathFotoTemporal).push();
-                    Newre.setValue(pathFotoTemporal);
+                    receta.setImagen(pathFotoTemporal);
 
                 }
             }
@@ -151,5 +149,11 @@ public class RecetaPerson extends Fragment {
         receta.setIngredientes(Ingredients.getText().toString());
         receta.setTextoReceta(RecetaTexto.getText().toString());
         receta.setImagen(recetaImage.toString());
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final String key = receta.getNombreReceta();
+        final DatabaseReference myRef = database.getReference("nombreReceta " + key);
+        myRef.setValue(receta);
+
     }
 }
