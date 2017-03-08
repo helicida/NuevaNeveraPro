@@ -154,20 +154,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragment = new FragmentRecetasImpl();
             transaccion = true;
         }
-        if (id == R.id.Buscador) {
+        else if (id == R.id.Buscador) {
             fragment = new FragmentBuscador();
             transaccion = true;
         }
-        if (id == R.id.Mis_Recetas_de_cocina) {
+        else if (id == R.id.Mis_Recetas_de_cocina) {
             fragment = new FragmentMisRecetas();
             transaccion = true;
         }
-        if (id == R.id.CrearRecetaPropia){
+        else if (id == R.id.CrearRecetaPropia){
             fragment = new RecetaPerson();
             transaccion = true;
         }
-
-        if (id == R.id.MapadeRecetas){
+        else if (id == R.id.MapadeRecetas){
             fragment = new Mapa();
             transaccion = true;
         }

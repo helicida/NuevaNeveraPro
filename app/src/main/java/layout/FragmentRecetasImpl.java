@@ -28,14 +28,11 @@ import test.minevera.databinding.FragmentRecetasBinding;
 public class FragmentRecetasImpl extends Fragment {
 
     private FragmentRecetasBinding binding;
-
-    private List <Receta> items;
+    private List <Receta> items = new ArrayList<>();
     private RecetasAdapter adapter;
     public GridView gvRecetas;
 
-    public FragmentRecetasImpl() {
-        // Required empty public constructor
-    }
+    public FragmentRecetasImpl() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,9 +48,6 @@ public class FragmentRecetasImpl extends Fragment {
 
     }
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,7 +58,7 @@ public class FragmentRecetasImpl extends Fragment {
 
         //Instanciamos la list view
         gvRecetas = (GridView) view.findViewById(R.id.gvRecetas);
-        items = new ArrayList<>();
+
         adapter = new RecetasAdapter (
                 getContext(),
                 0,
@@ -89,10 +83,7 @@ public class FragmentRecetasImpl extends Fragment {
     private void descargarRecetas() {
         RefreshAsyncTask refreshAsyncTask = new RefreshAsyncTask();
         refreshAsyncTask.execute();
-
     }
-
-
 
     class RefreshAsyncTask extends AsyncTask<Void, Void, ArrayList<Receta>> {
 
@@ -116,8 +107,6 @@ public class FragmentRecetasImpl extends Fragment {
                 adapter.add(recetas.get(i));
             }
             adapter.notifyDataSetChanged();
-
         }
     }
-
 }

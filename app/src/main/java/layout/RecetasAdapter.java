@@ -25,10 +25,8 @@ public class RecetasAdapter extends ArrayAdapter<Receta> implements Serializable
         super(context, resource, objects);
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
 
         // Obtenim l'objecte en la possició corresponent
         Receta receta = getItem(position);
@@ -45,7 +43,6 @@ public class RecetasAdapter extends ArrayAdapter<Receta> implements Serializable
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
 
         binding.adapterNombreReceta.setText(receta.getNombreReceta());
-
 
         Glide.with(getContext()).
                 load(receta.getImagen()).

@@ -19,8 +19,6 @@ import test.minevera.Receta;
 /**
  * Created by mireia on 8/01/17.
  */
-
-
 public class MisRecetasAdapter extends ArrayAdapter<Receta> implements Serializable {
 
     public MisRecetasAdapter(Context context, int resource, List<Receta> objects) {
@@ -30,20 +28,18 @@ public class MisRecetasAdapter extends ArrayAdapter<Receta> implements Serializa
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
-
         // Obtenim l'objecte en la possició corresponent
-        Receta receta = getItem(position);;
+        Receta receta = getItem(position);
 
         // Mirem a veure si la View s'està reusant, si no es així "inflem" la View
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.fragment_mis_recetas_row, parent, false);
+            convertView = inflater.inflate(R.layout.mis_recetas_row, parent, false);
         }
 
         // Unim el codi en les Views del Layout
-        TextView nombreCarta = (TextView) convertView.findViewById(R.id.adapterNombreReceta);
-        ImageView imagenReceta = (ImageView) convertView.findViewById(R.id.adapterImagen);
+        TextView nombreCarta = (TextView) convertView.findViewById(R.id.m_adapterNombreReceta);
+        ImageView imagenReceta = (ImageView) convertView.findViewById(R.id.m_adapterImagen);
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         nombreCarta.setText(receta.getNombreReceta());

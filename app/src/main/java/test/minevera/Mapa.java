@@ -1,18 +1,27 @@
 package test.minevera;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
 //Imports para el Overlise
 import android.util.DisplayMetrics;
+import android.widget.GridView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.osmdroid.api.IMapController;
 import org.osmdroid.views.overlay.MinimapOverlay;
 import org.osmdroid.views.overlay.ScaleBarOverlay;
@@ -20,6 +29,12 @@ import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import layout.RecetasAdapter;
+import test.minevera.databinding.FragmentMisRecetasBinding;
 
 public class Mapa extends Fragment {
 
@@ -32,10 +47,14 @@ public class Mapa extends Fragment {
     private CompassOverlay mCompassOverlay;
     private IMapController mapController;
 
+    // Firebase
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference referenciaListaRecetas;
 
-    public Mapa() {
-        // Required empty public constructor
-    }
+    // Recetas
+    private List<Receta> items = new ArrayList<>();
+
+    public Mapa() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,17 +71,46 @@ public class Mapa extends Fragment {
         initializeMap();
         setZoom();
         setOverlays();
+        map.invalidate();
 
-        //map.invalidate();
+        referenciaListaRecetas = database.getReference();
 
+        // Read from the database
+        referenciaListaRecetas.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
 
+                items.clear();
 
+                for( DataSnapshot i : dataSnapshot.getChildren()) {
+                    Receta receta1 = i.getValue(Receta.class);
+                    items.add(receta1);
+                }
 
+                Zonas auxZonas = new Zonas();
+
+                for(int i = 0; i < items.size(); i++){
+                    if(items.get(i).getArea() != null && items.get(i).getArea() != ""){
+                        auxZonas.setZone(items.get(i).getArea());
+                        GeoPoint estationpoint = new GeoPoint(auxZonas.returnLat(), auxZonas.returnLong());
+                        Marker startMaker = new Marker(map);
+                        startMaker.setPosition(estationpoint);
+                        startMaker.setTitle(items.get(i).getNombreReceta());
+                        map.getOverlays().add(startMaker);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(getContext(), "Error descargando las recetas", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
-
-
 
     private void initializeMap() {
         map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
@@ -75,7 +123,7 @@ public class Mapa extends Fragment {
                //  Setteamos el zoom al mismo nivel y ajustamos la posición a un geopunto
         mapController = map.getController();
         mapController.setZoom(25);
-           }
+    }
 
 
     private void setOverlays() {

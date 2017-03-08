@@ -8,14 +8,15 @@
     tools:context="layout.FragmentMisRecetas">
 
     <!-- TODO: Update blank fragment layout -->
-<GridView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/gvRecetas"
-    android:columnWidth="170dp"
-    android:numColumns="auto_fit"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
+    <GridView
+        android:id="@+id/gvMisRecetas"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:columnWidth="170dp"
+        android:numColumns="auto_fit"
+        android:visibility="visible" />
 
 </FrameLayout>
 </layout>
