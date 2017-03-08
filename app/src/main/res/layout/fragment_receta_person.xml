@@ -6,90 +6,151 @@
     tools:context="layout.RecetaPerson">
 
     <!-- TODO: Update blank fragment layout -->
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <android.support.constraint.Guideline
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/guideline"
-        app:layout_constraintGuide_begin="208dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="208dp"
-        tools:layout_editor_absoluteX="0dp" />
+        <EditText
+            android:id="@+id/nombreRecetaTexto"
+            android:layout_width="355dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nombre"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="11dp"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientesTexto"
+            app:layout_constraintHorizontal_bias="0.0" />
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:inputType="textPersonName"
-        android:text="Receta..."
-        android:ems="10"
-        android:id="@+id/recetaTexto"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp" />
+        <android.support.constraint.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_begin="137dp"
+            android:orientation="horizontal" />
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:inputType="text|textPersonName"
-        android:text="Ingredientes"
-        android:ems="10"
-        android:id="@+id/ingredientes"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp" />
+        <EditText
+            android:layout_width="359dp"
+            android:layout_height="132dp"
+            android:inputType="textPersonName"
+            android:text="Receta..."
+            android:ems="10"
+            android:id="@+id/recetaTextore"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline6"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guardarReceta" />
 
-    <android.support.constraint.Guideline
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/guideline2"
-        app:layout_constraintGuide_begin="290dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="290dp"
-        tools:layout_editor_absoluteX="0dp" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="text|textPersonName"
+            android:text="Ingredientes"
+            android:ems="10"
+            android:id="@+id/ingredientesTexto"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:srcCompat="@drawable/ic_menu_gallery"
-        android:id="@+id/imageView2"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        <android.support.constraint.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/guideline2"
+            app:layout_constraintGuide_begin="202dp"
+            android:orientation="horizontal" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-        android:id="@+id/ImagenRecetas"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/ingredientes"
-        android:layout_marginBottom="8dp" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_menu_gallery"
+            android:id="@+id/imageView2"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+            android:id="@+id/ImagenRecetas"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ingredientesTexto"
+            android:layout_marginBottom="8dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline6"
+            app:layout_constraintGuide_begin="298dp"
+            android:orientation="horizontal" />
+
+        <EditText
+            android:id="@+id/categoriaTexto"
+            android:layout_width="155dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Categoria"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="289dp" />
+
+        <EditText
+            android:id="@+id/areaTexto"
+            android:layout_width="196dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Area"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+            app:layout_constraintLeft_toRightOf="@+id/categoriaTexto" />
+
+        <Button
+            android:id="@+id/guardarReceta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>

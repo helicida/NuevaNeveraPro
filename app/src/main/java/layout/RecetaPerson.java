@@ -11,9 +11,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +26,7 @@ import java.util.Date;
 import java.util.Map;
 
 import test.minevera.R;
+import test.minevera.Receta;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -30,7 +35,11 @@ public class RecetaPerson extends Fragment {
     private ImageView recetaImage;
     private Intent takePictureIntent;
 
-    public RecetaPerson() {}
+    //Objeto
+    Receta receta = new Receta();
+
+    public RecetaPerson() {
+    }
 
     private String pathFotoTemporal;
     private static final int REQUEST_TAKE_PHOTO = 1;
@@ -47,8 +56,16 @@ public class RecetaPerson extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_receta_person, container, false);
-        recetaImage = (ImageView) view.findViewById(R.id.ImagenRecetas);
+        Button guardar = (Button) view.findViewById(R.id.guardarReceta);
 
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GuardarReceta();
+            }
+        });
+
+        recetaImage = (ImageView) view.findViewById(R.id.ImagenRecetas);
         recetaImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +123,10 @@ public class RecetaPerson extends Fragment {
                 if (resultCode == RESULT_OK) {
 
                     Glide.with(getContext()).load(pathFotoTemporal).into(recetaImage);
-                    //Falta guardar la Url en la base de datos.
+                    //Guardamos en el firebase
+                    FirebaseDatabase data = FirebaseDatabase.getInstance();
+                    final DatabaseReference Newre = data.getReference("RECETAPERSON " + pathFotoTemporal).push();
+                    Newre.setValue(pathFotoTemporal);
 
                 }
             }
@@ -114,5 +134,22 @@ public class RecetaPerson extends Fragment {
             e.printStackTrace();
 
         }
+    }
+
+    private void GuardarReceta() {
+        //Botones ect
+        EditText NombreReceta = (EditText) view.findViewById(R.id.nombreRecetaTexto);
+        EditText RecetaTexto = (EditText) view.findViewById(R.id.recetaTextore);
+        EditText Ingredients = (EditText) view.findViewById(R.id.ingredientesTexto);
+        EditText Categoria = (EditText) view.findViewById(R.id.categoriaTexto);
+        EditText Area = (EditText) view.findViewById(R.id.areaTexto);
+
+        //Pasamos lo introducido en los Text
+        receta.setNombreReceta(NombreReceta.getText().toString());
+        receta.setArea(Area.getText().toString());
+        receta.setCategoria(Categoria.getText().toString());
+        receta.setIngredientes(Ingredients.getText().toString());
+        receta.setTextoReceta(RecetaTexto.getText().toString());
+        receta.setImagen(recetaImage.toString());
     }
 }
