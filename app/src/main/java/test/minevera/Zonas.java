@@ -42,8 +42,9 @@ public class Zonas {
         if(zoneName.equalsIgnoreCase("Spain")){
             return 40.4167754;
         }
-        
-        return 6.66666;
+        else{
+            return 40.4167754;
+        }
     }
 
     public double returnLong(){
@@ -73,9 +74,9 @@ public class Zonas {
         }
         if(zoneName.equalsIgnoreCase("Spain")){
             return -3.7037901999999576;
+        }else {
+            return -3.7037901999999576;
         }
-
-        return 6.666;
     }
 
     public void setZone(String zone){

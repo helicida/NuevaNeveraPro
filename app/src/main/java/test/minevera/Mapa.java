@@ -1,5 +1,7 @@
 package test.minevera;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.util.DisplayMetrics;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,8 +41,11 @@ import test.minevera.databinding.FragmentMisRecetasBinding;
 
 public class Mapa extends Fragment {
 
+    //Variables mapa
     private MapView map;
     private View view;
+    Resources resources;
+
     //Variables para el overlise
     private MyLocationNewOverlay myLocationOverlay;
     private MinimapOverlay mMinimapOverlay;
@@ -82,7 +88,7 @@ public class Mapa extends Fragment {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 
-                items.clear();
+
 
                 for( DataSnapshot i : dataSnapshot.getChildren()) {
                     Receta receta1 = i.getValue(Receta.class);
