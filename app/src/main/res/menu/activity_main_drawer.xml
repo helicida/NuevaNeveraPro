@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <!--Aqui asignamos las id y los nombres que se meustran en la view-->
+        <!--Dejo esto por si mas adelante quiero asignarles iconos-->
+        <!--android:icon="@drawable/ic_menu_camera"-->
+        <item
+            android:id="@+id/Buscador"
+            android:title="Buscador" />
+        <item
+            android:id="@+id/Mis_Recetas_de_cocina"
+            android:title="@string/mis_recetas" />
+        <item
+            android:id="@+id/Recetas_del_dia"
+            android:title="Descubre" />
+        <item
+            android:id="@+id/CrearRecetaPropia"
+            android:title="Crea tu receta Personalizada" />
+        <item
+            android:id="@+id/MapadeRecetas"
+            android:title="Mapa de Recetas" />
+    </group>
+
+</menu>

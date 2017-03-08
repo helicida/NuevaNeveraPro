@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:text="No results found, try other words"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/noEncontrado"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+            tools:text=" Search :"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintRight_toRightOf="@+id/gridBuscador"
+            app:layout_constraintBottom_toBottomOf="@+id/gridBuscador"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline2"
+            app:layout_constraintGuide_begin="20dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline3"
+            app:layout_constraintGuide_begin="69dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="69dp"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline4"
+            app:layout_constraintGuide_begin="91dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="91dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline5"
+            app:layout_constraintGuide_begin="125dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="125dp"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <GridView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/gridBuscador"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.81" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

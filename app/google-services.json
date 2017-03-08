@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1006522590892",
+    "firebase_url": "https://nevera-b0190.firebaseio.com",
+    "project_id": "nevera-b0190",
+    "storage_bucket": "nevera-b0190.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006522590892:android:4af51132227ea1db",
+        "android_client_info": {
+          "package_name": "test.minevera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006522590892-10v0dv96rq3fuqkqfpi3d3j7brr1g2m0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "test.minevera",
+            "certificate_hash": "23c5de0392b59c2b6744862e271e34cb5a50e7cf"
+          }
+        },
+        {
+          "client_id": "1006522590892-42qlmh0917ke3vt2ugn61ql8cqkp508u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIL184mGHS00huXx43KlqAx58wI1GBLec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006522590892-42qlmh0917ke3vt2ugn61ql8cqkp508u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
