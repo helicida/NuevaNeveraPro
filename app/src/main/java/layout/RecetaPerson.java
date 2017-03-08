@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import test.minevera.MainActivity;
 import test.minevera.R;
 import test.minevera.Receta;
 
@@ -35,6 +36,7 @@ public class RecetaPerson extends Fragment {
 
     private ImageView recetaImage;
     private Intent takePictureIntent;
+    Fragment fragment = null;
 
     //Objeto
     Receta receta = new Receta();
@@ -45,6 +47,13 @@ public class RecetaPerson extends Fragment {
     private String pathFotoTemporal;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static View view;
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
 
     @Override
@@ -58,7 +67,6 @@ public class RecetaPerson extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_receta_person, container, false);
         Button guardar = (Button) view.findViewById(R.id.guardarReceta);
-
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +162,8 @@ public class RecetaPerson extends Fragment {
         final String key = receta.getNombreReceta();
         final DatabaseReference myRef = database.getReference("nombreReceta " + key);
         myRef.setValue(receta);
+        Toast.makeText(getContext(), " Receta Guardada ", Toast.LENGTH_SHORT).show();
 
+        ((MainActivity) getActivity()).AbrirFichar();
     }
 }
